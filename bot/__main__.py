@@ -14,7 +14,8 @@ from bot import (
     TG_BOT_TOKEN,
     BOT_USERNAME,
     SESSION_NAME,
-    DATABASE_URL
+    DATABASE_URL,
+    app
 )
 from bot.plugins.new_join_fn import (	
     help_message_f	
@@ -154,6 +155,7 @@ app = Client(
 )
 """
 
+"""
 class Bot(Client):
     def __init__(self):
         super().__init__(
@@ -175,7 +177,7 @@ class Bot(Client):
         print("Stopped Services")
 
 app = Bot()
-
+"""
 
 if __name__ == "__main__":
     app.run()
