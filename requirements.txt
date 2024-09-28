@@ -5,5 +5,5 @@ hachoir
 tgcrypto
 Pyrogram==1.4.16
 motor
-git+https://github.com/user/proj.git#egg=proj
+aiofiles
 dnspython
