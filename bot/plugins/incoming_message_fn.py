@@ -23,8 +23,7 @@ from bot import (
     LOG_CHANNEL,
     UPDATES_CHANNEL,
     DATABASE_URL,
-    SESSION_NAME,
-    app
+    SESSION_NAME
 )
 from bot.helper_funcs.ffmpeg import (
     convert_video,
@@ -37,7 +36,8 @@ from bot.helper_funcs.display_progress import (
     humanbytes
 )
 
-from pyrogram import Client, filters
+from pyrogram import filters
+from pyrogram import Client as app
 from pyrogram.handlers import MessageHandler, CallbackQueryHandler
 from pyrogram.types import ChatPermissions, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant, UsernameNotOccupied, ChatAdminRequired, \
