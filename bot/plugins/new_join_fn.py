@@ -8,12 +8,12 @@ from bot.localisation import Localisation
 from bot import (
     UPDATES_CHANNEL,
     DATABASE_URL,
-    SESSION_NAME,
-    app
+    SESSION_NAME
 )
 from pyrogram.types import ChatPermissions, InlineKeyboardMarkup, InlineKeyboardButton, Message
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant, UsernameNotOccupied, ChatAdminRequired, PeerIdInvalid
 from pyrogram import filters
+from pyrogram import Client as app
 
 db = Database(DATABASE_URL, SESSION_NAME)
 CURRENT_PROCESSES = {}
