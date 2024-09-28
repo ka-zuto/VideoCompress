@@ -23,9 +23,11 @@ from pyrogram.types import CallbackQuery
 from bot import (
     AUTH_USERS,
     DOWNLOAD_LOCATION,
-    LOG_CHANNEL
+    LOG_CHANNEL,
+    app
 )
 
+@app.on_callback_query()
 async def button(bot, update: CallbackQuery):
     cb_data = update.data
     try:
