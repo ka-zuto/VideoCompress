@@ -23,7 +23,8 @@ from bot import (
     LOG_CHANNEL,
     UPDATES_CHANNEL,
     DATABASE_URL,
-    SESSION_NAME
+    SESSION_NAME,
+    app
 )
 from bot.helper_funcs.ffmpeg import (
     convert_video,
@@ -53,6 +54,7 @@ CHAT_FLOOD = {}
 broadcast_ids = {}
 
 
+@app.on_message(filters.command(["start", f"start@{BOT_USERNAME}"]))
 async def incoming_start_message_f(bot, update):
     """/start command"""
     if not await db.is_user_exist(update.chat.id):
@@ -105,7 +107,7 @@ async def incoming_start_message_f(bot, update):
         reply_to_message_id=update.message_id,
     )
 
-
+@app.on_message(filters.command(["compress", f"compress@{BOT_USERNAME}"]))
 async def incoming_compress_message_f(bot, update):
     """/compress command"""
     if not await db.is_user_exist(update.chat.id):
@@ -433,6 +435,7 @@ async def incoming_compress_message_f(bot, update):
             pass
 
 
+@app.on_message(filters.command(["cancel", f"cancel@{BOT_USERNAME}"]) & filters.chat(chats=AUTH_USERS))
 async def incoming_cancel_message_f(bot, update):
     """/cancel command"""
     if update.from_user.id not in AUTH_USERS:
