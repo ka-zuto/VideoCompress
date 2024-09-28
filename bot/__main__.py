@@ -15,7 +15,7 @@ from bot import (
     BOT_USERNAME,
     SESSION_NAME,
     DATABASE_URL,
-    app
+    Bot
 )
 from bot.plugins.new_join_fn import (	
     help_message_f	
@@ -180,4 +180,4 @@ app = Bot()
 """
 
 if __name__ == "__main__":
-    app.run()
+    Bot().run()
