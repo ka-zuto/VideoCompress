@@ -16,9 +16,7 @@ class Config(object):
     UPDATES_CHANNEL = get_config("UPDATES_CHANNEL", "devslab") # Without `@` LOL
      # Get these values from my.telegram.org
     # array to store the channel ID who are authorized to use the bot
-    AUTH_USERS = set(
-        6670030146
-    )
+    # ahaha
     # the download location, where the HTTP Server runs
     DOWNLOAD_LOCATION = get_config("DOWNLOAD_LOCATION", "/app/downloads")
     # Telegram maximum file upload size
