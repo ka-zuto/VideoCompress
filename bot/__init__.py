@@ -78,5 +78,3 @@ class Bot(Client):
     async def stop(self):
         await super().stop()
         print("Stopped Services")
-
-app = Bot()
