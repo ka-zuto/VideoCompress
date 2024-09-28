@@ -5,13 +5,12 @@ import os
 
 from bot.database import Database
 from pyrogram import filters
-from pyrogram import Client
+from pyrogram import Client as app
 
 from bot import (
     AUTH_USERS,
     DATABASE_URL,
-    SESSION_NAME,
-    app
+    SESSION_NAME
 )
 
 db = Database(DATABASE_URL, SESSION_NAME)
