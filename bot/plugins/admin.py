@@ -9,7 +9,8 @@ from pyrogram import Client
 
 from bot import (
     DATABASE_URL,
-    SESSION_NAME
+    SESSION_NAME,
+    app
 )
 
 db = Database(DATABASE_URL, SESSION_NAME)
@@ -17,12 +18,14 @@ CURRENT_PROCESSES = {}
 CHAT_FLOOD = {}
 broadcast_ids = {}
 
+@app.on_message(filters.command(["status"]) & filters.user(AUTH_USERS))
 async def sts(c, m):
     
     total_users = await db.total_users_count()
     await m.reply_text(text=f"Total user(s) {total_users}", quote=True)
 
 
+@app.on_message(filters.command(["status"]) & filters.user(AUTH_USERS))
 async def ban(c, m):
     
     if len(m.command) == 1:
@@ -61,6 +64,7 @@ async def ban(c, m):
         )
 
 
+@app.on_message(filters.command(["unban_user"]) & filters.user(AUTH_USERS))
 async def unban(c, m):
     if len(m.command) == 1:
         await m.reply_text(
@@ -96,6 +100,7 @@ async def unban(c, m):
         )
 
 
+filters.command(["banned_users"]) & filters.user(AUTH_USERS)
 async def _banned_usrs(c, m):
     all_banned_users = await db.get_all_banned_users()
     banned_usr_count = 0
