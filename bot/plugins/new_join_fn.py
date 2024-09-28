@@ -36,7 +36,7 @@ async def new_join_f(client, message):
         await message.chat.leave()
 
 
-@app.on_message(filters.command(["help", f"help@{BOT_USERNAME}"]))
+@app.on_message(filters.command(["help"]))
 async def help_message_f(client, message):
     if not await db.is_user_exist(message.chat.id):
         await db.add_user(message.chat.id)
