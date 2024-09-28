@@ -65,7 +65,7 @@ class Bot(Client):
             "stackhostbot",
             api_id=APP_ID,
             api_hash=API_HASH,
-            bot_token=BOT_TOKEN,
+            bot_token=TG_BOT_TOKEN,
             plugins={"root": "bot.plugins"},
         )
     async def start(self):
