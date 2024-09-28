@@ -54,3 +54,29 @@ logging.basicConfig(
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 logging.getLogger("urllib3").setLevel(logging.WARNING)
 LOGGER = logging.getLogger(__name__)
+
+
+from pyrogram import Client, filters
+
+
+class Bot(Client):
+    def __init__(self):
+        super().__init__(
+            "stackhostbot",
+            api_id=API_ID,
+            api_hash=API_HASH,
+            bot_token=BOT_TOKEN,
+            plugins={"root": "bot.plugins"},
+        )
+    async def start(self):
+        try:
+            await super().start()
+            print("StackHost Started")
+        except Exception as e:
+            print("error: ", e)
+
+    async def stop(self):
+        await super().stop()
+        print("Stopped Services")
+
+app = Bot()
