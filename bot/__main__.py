@@ -48,19 +48,13 @@ from bot.plugins.status_message_fn import (
 from bot.commands import Command
 from bot.plugins.call_back_button_handler import button
 
+"""
 if __name__ == "__main__" :
     # create download directory, if not exist
     if not os.path.isdir(DOWNLOAD_LOCATION):
         os.makedirs(DOWNLOAD_LOCATION)
     #
     
-    app = Client(
-        SESSION_NAME,
-        bot_token=TG_BOT_TOKEN,
-        api_id=APP_ID,
-        api_hash=API_HASH,
-        workers=2
-    )
     #
     app.set_parse_mode("html")
     #
@@ -147,4 +141,41 @@ if __name__ == "__main__" :
     app.add_handler(call_back_button_handler)
 
     # run the APPlication
+    app.run()
+
+"""
+
+"""
+app = Client(
+        SESSION_NAME,
+        bot_token=TG_BOT_TOKEN,
+        api_id=APP_ID,
+        api_hash=API_HASH
+)
+"""
+
+class Bot(Client):
+    def __init__(self):
+        super().__init__(
+            "stackhostbot",
+            api_id=API_ID,
+            api_hash=API_HASH,
+            bot_token=BOT_TOKEN,
+            plugins={"root": "bot.plugins"},
+        )
+    async def start(self):
+        try:
+            await super().start()
+            print("StackHost Started")
+        except Exception as e:
+            print("error: ", e)
+
+    async def stop(self):
+        await super().stop()
+        print("Stopped Services")
+
+app = Bot()
+
+
+if __name__ == "__main__":
     app.run()
