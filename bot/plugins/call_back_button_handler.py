@@ -19,12 +19,13 @@ LOGGER = logging.getLogger(__name__)
 
 import datetime
 from pyrogram.types import CallbackQuery
+from pyrogram import Client as app
+
 #from bot.helper_funcs.admin_check import AdminCheck
 from bot import (
     AUTH_USERS,
     DOWNLOAD_LOCATION,
-    LOG_CHANNEL,
-    app
+    LOG_CHANNEL
 )
 
 @app.on_callback_query()
