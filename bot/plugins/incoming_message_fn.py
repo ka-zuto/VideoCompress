@@ -52,6 +52,7 @@ db = Database(DATABASE_URL, SESSION_NAME)
 CURRENT_PROCESSES = {}
 CHAT_FLOOD = {}
 broadcast_ids = {}
+BOT_USERNAME = "MakimaCompressBot"
 
 
 @app.on_message(filters.command(["start", f"start@{BOT_USERNAME}"]))
