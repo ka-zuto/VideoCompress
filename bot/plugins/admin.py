@@ -8,6 +8,7 @@ from pyrogram import filters
 from pyrogram import Client
 
 from bot import (
+    AUTH_USERS,
     DATABASE_URL,
     SESSION_NAME,
     app
@@ -17,6 +18,7 @@ db = Database(DATABASE_URL, SESSION_NAME)
 CURRENT_PROCESSES = {}
 CHAT_FLOOD = {}
 broadcast_ids = {}
+
 
 @app.on_message(filters.command(["status"]) & filters.user(AUTH_USERS))
 async def sts(c, m):
