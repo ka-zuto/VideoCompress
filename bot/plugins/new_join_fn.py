@@ -8,7 +8,8 @@ from bot.localisation import Localisation
 from bot import (
     UPDATES_CHANNEL,
     DATABASE_URL,
-    SESSION_NAME
+    SESSION_NAME,
+    app
 )
 from pyrogram.types import ChatPermissions, InlineKeyboardMarkup, InlineKeyboardButton, Message
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant, UsernameNotOccupied, ChatAdminRequired, PeerIdInvalid
@@ -34,6 +35,7 @@ async def new_join_f(client, message):
         await message.chat.leave()
 
 
+@app.on_message(filters.command(["help", f"help@{BOT_USERNAME}"]))
 async def help_message_f(client, message):
     if not await db.is_user_exist(message.chat.id):
         await db.add_user(message.chat.id)
